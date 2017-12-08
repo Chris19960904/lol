@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0; padding: 0;}
+		.promo{float: left; position: relative; width: 820px; height: 400px; margin-right: 20px; margin-bottom: 60px; overflow: hidden;}
+		.promo-list{position: relative; width: 4100px; height: 350px;}
+		li{list-style: none;}
+		.list-img{float: left; width: 820px; height: 350px; background: #000;}
+		.list-img a, .list-img img{display: block; width: 820px; height: 350px;}
+		.promo-trigger{width: 100%; height: 50px; background: #121112; overflow: hidden; zoom: 1;}
+		.promo-trigger .list-text{float: left; width: 164px; height: 50px; line-height: 50px; cursor: pointer; text-align: center; color: #c8c8c8; font-size: 14px;}
+		.promo-trigger .on{color: #e9c06c; background: #303030;}
+		.side-nav{float: left; width: 400px; height: 400px;}
+		.side-download{position: relative; display: block; width: 100%; height: 150px; margin-bottom: 10px; background: url(images/bg-download.jpg) no-repeat 0 0;}
+		.side-down-video {display: block; width: 100%; height: 150px;}
+		.side-menu {margin-left: -5px;}
+		.side-menu li{float: left; width: 130px; height: 55px; margin-left: 5px; margin-top: 5px;}
+		.side-menu a{display: block; width: 130px; height: 55px; line-height: 55px; background: #fff; text-align: center; font-size: 14px; color: #555555;}
+		a {text-decoration: none;}
+		.icon{display: inline-block; width: 30px; height: 30px; line-height: 30px; vertical-align: middle; background-repeat: no-repeat; background-image: url(images/spr-v2.png);}
+		.guide{background-position: -200px 0;}
+		.yz{background-position: -560px 0;}
+		.mall{background-position: -590px 0;}
+		.side-menu .icon-new, .side-menu .icon-hot { position: absolute; margin-top: 3px;}
+		.hot{background-position: -107px 0;}
+		.icon-icon{background-position: -380px 0;}
+		.dis{display: none;}
+		.news{float: left; width: 820px; margin-right: 20px; margin-bottom: 60px;}
+		.tab{position: relative; height: 50px; border-bottom: 3px solid #ededee;}
+		.tab-title{float: left; font-size: 26px; line-height: 50px; color: #404040; margin-right: 40px; font-weight: normal;}
+		.tab-nav {float: left; margin-top: 14px; position: relative; height: 36px;}
+		.tab-nav .current{color: #d1ab57; font-weight: bold; border-bottom: 3px solid #d1ab57;}
+		.news-nav li{width: 168px; font-size: 18px;}
+		.tab-nav li{float: left; height: 36px; line-height: 36px; overflow: hidden; cursor: pointer; color: #666666; font-size: 16px; text-align: center;}
+		.news-list {padding: 24px 0 0;}
+		.news-content .first{height: 124px; margin-bottom: 24px; overflow: hidden;}
+		.news-item {height: 35px; line-height: 35px; padding: 4px 0;}
+		.news-item .lnk-tit{display: block; position: relative; height: 35px; line-height: 35px; padding: 0 55px 0 90px; overflow: hidden; font-size: 16px; color: #555555;}
+		.news-content .first img {float: left; margin-right: 20px;}
+		.news-content .news-first-title {display: block; font-size: 36px; font-weight: bold; color: #3e3e3e; line-height: 50px; height: 50px; overflow: hidden;}
+		.news-content .news-first-desc {display: block; height: 60px; overflow: hidden; font-size: 14px; color: #898989; line-height: 1.5;}
+		.news-item .new-type{position: absolute; left: 0; top: 0; width: 68px; height: 35px; line-height: 35px; background: #ebebeb; text-align: center; color: #7a7a7a;}
+		.news-item .date{position: absolute; right: 0; top: 0; width: 50px; height: 35px; line-height: 35px; text-align: right; color: #bababa;}
+		.news-item .lnk-tit:hover{color: #d1ab57; text-decoration: none;}
+		.news-item .lnk-tit:hover .new-type{color: #fff; background: #d1ab57;}
+		.news .news-more {display: block; width: 100%; height: 45px; margin-top: 15px; line-height: 45px; background: #f0f0f0; color: #515151; font-size: 16px; text-align: center;}
+		.news .news-more em {color: #d1ab57;}
+		.hero{float: left; width: 400px; margin-bottom: 50px;}
+		.hero-tab{margin-bottom: 15px;}
+		.hero-tab li{width: 133.333333px;}
+		.hero-content {height: 400px; margin-bottom: 20px;}
+		.free-list {height: 400px; overflow: hidden;}
+		.free-list, .hero-new-list {position: relative; margin-right: -10px;}
+		.hero-free {position: absolute; height: auto; overflow: hidden; z-index: 8;}
+		.free-list a, .hero-new-list a {display: block; float: left; position: relative; width: 195px; height: 70px; overflow: hidden; margin-right: 10px; margin-bottom: 10px;}
+		.free-list img, .hero-new-list img {display: block; width: 195px; height: 70px;}
+		.sbg {display: none; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: #000; background: rgba(0,0,0,0.78); cursor: pointer; overflow: hidden; z-index: 1;}
+		.free-list a:hover .sbg {display: block;}
+		.free-list .first-name {position: absolute; width: 100%; text-align: center; left: 50%; margin-left: -97px; padding-top: 0; line-height: 35px;}
+		.sbg .first-name {display: block; padding-top: 18px; font-size: 14px; color: #c9aa71; text-align: center;}
+		.bottom-go {display: block; margin-top: 63px; margin-bottom: 20px; overflow: hidden; zoom: 1;}
+		.free-bottom {overflow: hidden; zoom: 1; padding-bottom: 5px;}
+		.free-drag {float: left; height: 15px; padding: 0 15px; background: #d1ab57; cursor: pointer;}
+		.qt-go, .mall-go {float: left; width: 195px; height: 70px;}
+		.free-dreg{display: inline-block; margin-top: -10px; width: 15px; height: 15px; background-position: -678px -80px;}
+		.free-time{float: right; color: #9F9F9F; font-size: 12px;}
+		.side-tips-18 {font-size: 12px; color: #878787;}
+		.side-tips-18 {position: relative; height: 70px; padding-top: 5px; padding-left: 80px;}
+		.icon-18 {position: absolute; left: 0; top: 0; width: 70px; height: 70px; background-position: -330px -89px;}
+		.side-tips-18 h5 {color: #404040; font-size: 14px; font-weight: normal;}
+	</style>
+</head>
+<body>
+	<div class="promo">
+        <ul id="inner" class="promo-list">
+        	<li class="list-img"><a href="javascript:;"><img src="images/1506342882.jpg"/></a></li>
+        	<li class="list-img"><a href="javascript:;"><img src="images/1505471940.jpg"/></a></li>
+        	<li class="list-img"><a href="javascript:;"><img src="images/1506075303.jpg"/></a></li>
+        	<li class="list-img"><a href="javascript:;"><img src="images/1506333808.jpg"/></a></li>
+        	<li class="list-img"><a href="javascript:;"><img src="images/1506161398.jpg"/></a></li>
+        </ul>
+        <div id="item" class="promo-trigger">
+    		<span class="list-text">李青之跃龙在渊</span>
+        	<span class="list-text">收集卡片拿奖励</span>
+        	<span class="list-text">冠军之箭艾希开售</span>
+        	<span class="list-text">阿卡丽的黑金商店</span>
+        	<span class="list-text">全球总决赛限定手办</span>
+        </div>
+    </div>
+    <div class="side-nav">
+        <div class="side-download">
+                                <video class="side-down-video" autoplay="" loop="">
+                                    <source src="images/down.mp4" type="video/mp4">
+                                </video>
+                                <a class="side-nav-download" href="javascript:;"></a>
+                            </div>
+                            <ul class="side-menu">
+                                <li><a href="javascript:;"><i class="icon guide"></i>新手推荐</a></li>
+                                <li><a href="javascript:;"><i class="icon yz"></i>宇宙官网</a></li>
+                                <li><a href="javascript:;"><i class="icon mall"></i>周边商城<i class="icon-hot"></i></a></li>
+                                <li><a href="javascript:;)"><i class="icon-icon"></i>新客户端<i class="icon-new"></i></a></li>
+                                <li><a href="javascript:;"><i class="icon cjf"></i>峡谷之巅<i class="icon-new"></i></a></li>
+                                <li><a href="javascript:;"><i class="icon cdk"></i>CDK兑换</a></li>
+                                <li><a href="javascript:;"><i class="icon rgm"></i>轮换模式<i class="icon-hot"></i></a></li>
+                                <li><a href="javascript:;"><i class="icon info"></i>游戏资料</a></li>
+                                <li><a href="javascript:;"><i class="icon reward"></i>领奖中心</a></li>
+                                <li><a href="javascript:;"><i class="icon weibo"></i>官方微博</a></li>
+                                <li><a href="javascript:;"><i class="icon bbs"></i>玩家论坛</a></li>
+                                <li><a href="javascript:;"><i class="icon kefu"></i>在线客服</a></li>
+                            </ul>
+    </div>
+	<div class="home-mod news">
+        <div class="tab news-top">
+            <h3 class="tab-title">最新资讯</h3>
+            <ul id="J_newsTab" class="tab-nav news-nav">
+                <li class="newsnav-item current">综合新闻</li>
+                <li class="newsnav-item">官方公告</li>
+                <li class="newsnav-item">赛事新闻</li>
+                <li class="newsnav-item">论坛资讯</li>
+            </ul>
+        </div>
+        <div class="news-list">
+            <div class="news-content dis">
+            	<ul id="Jnews_n1_inner" class="clearfix txtlist">
+                    <li class="first"><a href="javascript:;"  class="lnk-tit"><img src="images/pic-news7.jpg"><span class="news-first-title">季前赛预告：新符文系统</span><span class="news-first-desc">我们正在重铸符文和天赋系统，将其合二为一精简成一个游戏准备系统。</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>等级和奖励改动常见问题解答<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>伊芙琳重做：再次沉沦痛苦之拥吧！<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>游戏性想法9月22日：谈谈召唤师技能等级<span class="date">09/23</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>2017全球总决赛今日13点正式开赛<span class="date">09/23</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>2017全球总决赛淘汰赛售票预告<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>符文角：关于用户界面<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>冠军月饼送英雄<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>骚男、PDD魔性步伐演绎广播体操！<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>教你一招：5分钟学会剑姬一秒五剑和一秒破阵<span class="date">09/21</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">新闻</span>游戏性调整想法 9月20日<span class="date">09/21</span></a></li>
+				</ul>
+            </div>
+            <div class="news-content dis">
+				<ul id="Jnews_n2_inner" class="clearfix txtlist">
+	                <li class="first"><a href="javascript:;" class="lnk-tit"><img src="images/pic-news2.jpg"><span class="news-first-title">部分大区任务系统异常修复公告</span><span class="news-first-desc">由于此问题造成的不便我们深表歉意，感谢您对《英雄联盟》的大力支持!</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>影流之主 劫 皮肤禁用补偿公告<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>魔法引擎活动升级公告<span class="date">09/21</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>武器大师竞技场更新公告<span class="date">09/21</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>9月22日免费英雄更换公告<span class="date">09/20</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>9月19日全大区延迟开启公告<span class="date">09/19</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>9月19日全区停机维护公告<span class="date">09/18</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>峡谷之巅大区开放时间调整公告<span class="date">09/18</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>关于男爵领域大区试运行即时反馈系统的公告<span class="date">09/15</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>玉剑传说皮肤竞猜获奖公告<span class="date">09/15</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">公告</span>关于解除影流之主-劫的禁用、保持部分皮肤禁用的通知<span class="date">09/14</span></a></li>
+				</ul>
+			</div>
+			<div class="news-content dis">
+				<ul id="Jnews_n3_inner" class="clearfix txtlist">
+					<li class="first"><a href="javascript:;" class="lnk-tit"><img src="images/pic-news6.jpg"><span class="news-first-title">9月25日TOP5：Padden克格莫走A豪取五杀</span><span class="news-first-desc"></span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>入围赛第三日回顾 大嘴五杀助FB连胜<span class="date">09/26</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>全球总决赛今日看点回顾：黑马费内巴切领跑D组<span class="date">09/26</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>第六届高校联赛海选赛报名火热开启<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>WhiteLotus卡莉斯塔献首个五杀<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>周一看点推荐：HKA与LJL赛区RPG交手<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>入围赛今日回顾 WE与C9四连胜晋级<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>亚索VN齐登场 总决赛首个五杀诞生<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>互秀操作疯狂打架 WE浪出第四胜<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>龙的传人Condi酒桶宿命抢龙<span class="date">09/24</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">赛事</span>入围赛首日回顾 we斩雄狮擒黑熊<span class="date">09/23</span></a></li>
+				</ul>
+			</div>
+			<div class="news-content dis">
+				<ul id="Jnews_n4_inner" class="clearfix txtlist">
+                    <li class="first"><a href="javascript:;" class="lnk-tit"><img src="images/pic-news11.jpg"><span class="news-first-title">【问拳头特别版】怪物入侵模式与星之守护</span><span class="news-first-desc">本周特别版我们来聊一聊怪物入侵以及星之守护皮肤。</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>【话题】WE C9四战皆胜 C D组明日开战<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>伊芙琳将重做，黑夜的面纱即将揭开<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>从s2到准s8千场九尾妖狐的王者攻略<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>文森特为粉丝了遗愿，小虎UZI勤俭持家<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>阿兹尔改行卖炸鸡，克烈的身世之谜<span class="date">09/25</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>不灭凤凰涅槃，团战势不可挡。<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>可萌可萌的妹纸，一起来开黑吧<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>【撸阿撸画阿画】羞恥的死法<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>【话题】你有没有逼疯过你的队友？<span class="date">09/22</span></a></li>
+					<li class="news-item"><a href="javascript:;" class="lnk-tit"><span class="new-type">论坛</span>【防坑大指南】9月22日周免攻略<span class="date">09/22</span></a></li>
+				</ul>
+			</div>
+		</div>
+    	<a class="news-more" href="">阅读更多<em>最新资讯</em></a>
+	</div>
+	<div class="hero">
+        <div class="hd">
+            <div class="tab hero-tab">
+                <ul class="tab-nav hero-nav">
+                    <li class="heronav-item current">周免英雄</li>
+                    <li class="heronav-item">最新皮肤</li>
+                    <li class="heronav-item">最新英雄</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bd">
+            <div class="hero-content hero-free dis">
+                <div class="free-list">
+                	<a href=""><img width="195" height="70" src="images/avatar/Chogath.jpg"><span class="sbg"><span class="first-name">虚空恐惧</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Galio.jpg"><span class="sbg"><span class="first-name">正义巨像</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Kalista.jpg"><span class="sbg"><span class="first-name">复仇之矛</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Kassadin.jpg"><span class="sbg"><span class="first-name">虚空行者</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Lulu.jpg"><span class="sbg"><span class="first-name">仙灵女巫</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Lux.jpg"><span class="sbg"><span class="first-name">光辉女郎</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Renekton.jpg"><span class="sbg"><span class="first-name">荒漠屠夫</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Syndra.jpg"><span class="sbg"><span class="first-name">暗黑元首</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Taliyah.jpg"><span class="sbg"><span class="first-name">岩雀</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Thresh.jpg"><span class="sbg"><span class="first-name">魂锁典狱长</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Trundle.jpg"><span class="sbg"><span class="first-name">巨魔之王</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Varus.jpg"><span class="sbg"><span class="first-name">惩戒之箭</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/XinZhao.jpg"><span class="sbg"><span class="first-name">德邦总管</span></span></a>
+                	<a href=""><img width="195" height="70" src="images/avatar/Zyra.jpg"><span class="sbg"><span class="first-name">荆棘之兴</span></span></a></div>
+                <div class="free-bottom">
+                    <span class="free-drag"><i class="icon free-dreg"></i></span>
+                    <span class="free-time">免费时间：2017-09-22 至 2017-09-29</span>
+                </div>
+            </div>
+            <div class="hero-content hero-free dis"></div>
+            <div class="hero-content hero-free dis"></div>
+        </div>
+        <div class="bottom-go">
+            <a class="qt-go" href=""><img src="images/pic-go-qt.jpg" width="195" height="70"></a>
+            <a class="mall-go fr" href=""><img src="images/pic-go-mall.jpg" width="195" height="70"></a>
+        </div>
+        <div class="side-tips-18">
+            <i class="icon-18 icon"></i>
+            <h5>本游戏适合18岁（含）以上玩家娱乐</h5>
+            <p>抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当<br>适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+    	var newsItem=document.getElementsByClassName("newsnav-item");
+    	var heroItem=document.getElementsByClassName("heronav-item");
+   		var newsContent=document.getElementsByClassName("news-content");
+   		var heroContent=document.getElementsByClassName("hero-content");
+    for (var i = 0; i < newsItem.length;i++) {
+        newsItem[0].className="newsnav-item current";
+        newsContent[0].className = 'news-content';
+        newsItem[i].key=i;
+        newsItem[i].onmouseover=function(){
+            for (var j = 0; j < newsItem.length;j++) {
+                newsItem[j].className="newsnav-item";
+                newsContent[j].className='news-content dis';
+            }
+            this.className="newsnav-item current";
+            newsContent[this.key].className='news-content';
+            console.log(this,this.key);
+        };
+    };
+     for (var i = 0; i < heroItem.length;i++) {
+        heroItem[0].className="heronav-item current";
+        heroContent[0].className = 'hero-content';
+        heroItem[i].key=i;
+        heroItem[i].onmouseover=function(){
+            for (var j = 0; j < heroItem.length;j++) {
+                heroItem[j].className="heronav-item";
+                heroContent[j].className='hero-content dis';
+            }
+            this.className="heronav-item current";
+            heroContent[this.key].className='hero-content';
+            console.log(this,this.key);
+        };
+    };
+    </script>
+</body>
+</html>

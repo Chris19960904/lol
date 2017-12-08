@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0}
+img{border:none}
+ul{list-style:none}
+body{color:#333333;font: 14px/150% helvetica,"微软雅黑","microsoft yahei",Verdana,Lucida,arial,sans-serif,"黑体";
+    position: relative;; font-size: 14px;}
+a{color:#333333;text-decoration:none}
+a:hover {text-decoration:none;}
+input{border: none;}
+input:focus{outline: none}
+.center{width: 1240px; margin: 0 auto;}
+.fl{float:left}
+.fr{float:right}
+.clear{clear:both;height:0;overflow:hidden}
